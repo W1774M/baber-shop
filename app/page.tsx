@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Calendar, Scissors, Clock, MapPin, Phone, Star, Instagram, Facebook } from 'lucide-react';
 import ReservationForm from '@/components/ReservationForm';
 import Gallery from '@/components/Gallery';
+import { salonConfig } from '@/lib/config';
 
 export default function HomePage() {
   return (
@@ -11,7 +12,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="text-2xl md:text-3xl font-bold text-beige hover:text-beige-light transition-colors">
-              💈 SOUL BARBER SHOP
+              ✂️ {salonConfig.name}
             </Link>
             <nav className="hidden md:flex items-center gap-8">
               <Link href="/#salon" className="text-sm font-medium text-beige-light/80 hover:text-beige transition-colors">
@@ -23,8 +24,8 @@ export default function HomePage() {
               <Link href="/#gallery" className="text-sm font-medium text-beige-light/80 hover:text-beige transition-colors">
                 Galerie
               </Link>
-              <Link href="/#barbers" className="text-sm font-medium text-beige-light/80 hover:text-beige transition-colors">
-                Barbers
+              <Link href="/#equipe" className="text-sm font-medium text-beige-light/80 hover:text-beige transition-colors">
+                Notre Équipe
               </Link>
               <Link 
                 href="/#reservation" 
@@ -46,13 +47,13 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-beige-light">
-              SOUL BARBER SHOP
+              {salonConfig.name}
             </h1>
             <p className="text-xl md:text-2xl lg:text-3xl text-beige-light/90 mb-6 font-light max-w-3xl mx-auto">
-              L'adresse pour vos coupes, barbe, tresses, Tapers et locks
+              {salonConfig.tagline}
             </p>
             <p className="text-base md:text-lg text-beige-light/70 mb-12 max-w-2xl mx-auto">
-              Convivialité, Professionnalisme, Passion
+              {salonConfig.slogan}
             </p>
             <Link
               href="/#reservation"
@@ -105,33 +106,26 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-beige-light">
-              SOUL BARBER SHOP
+              Notre Salon
             </h2>
             <p className="text-xl md:text-2xl text-beige-light/80 max-w-3xl mx-auto mb-4">
-              L'adresse pour vos coupes, barbe, tresses Tapers et locks
+              Un salon moderne pour hommes et femmes, où expertise et convivialité se rencontrent
             </p>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
             <div>
               <h3 className="text-3xl md:text-4xl font-bold mb-6 text-beige-light">
-                Soul barber SHOP 76
+                {salonConfig.description.title}
               </h3>
               <p className="text-lg text-beige-light/80 mb-4 leading-relaxed">
-                <strong className="text-beige">Convivialité, Professionnalisme, Passion</strong>
+                <strong className="text-beige">{salonConfig.slogan}</strong>
               </p>
-              <p className="text-lg text-beige-light/80 mb-4 leading-relaxed">
-                Soul Barber Shop, à deux pas de la cathédrale, occupe une position idéale dans le centre-ville de Rouen.
-              </p>
-              <p className="text-lg text-beige-light/80 mb-4 leading-relaxed">
-                Situé à deux pas de l'arrêt de TEOR « République », ce salon t'accueille de la meilleure des manières avec une équipe de professionnelle à ton écoute dès ton arrivée.
-              </p>
-              <p className="text-lg text-beige-light/80 mb-8 leading-relaxed">
-                Peur de s'ennuyer durant l'attente ? Pas de problème, Soul Barber a pensé à tout. Une PS4, un Baby foot ainsi qu'une télévision sont à ta disposition pour te divertir (et frapper tes potes à FIFA) ainsi que de nombreux magazines à thème afin de tuer ton ennui. Et tout ceci, dans une ambiance musicale afro.
-              </p>
-              <p className="text-lg text-beige-light/80 mb-8 leading-relaxed">
-                Le but ici est d'installer une ambiance conviviale tout en créant un lien fort avec l'un des meilleurs coiffeur de la ville.
-              </p>
+              {salonConfig.description.paragraphs.map((paragraph, idx) => (
+                <p key={idx} className="text-lg text-beige-light/80 mb-4 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
               <Link
                 href="/#reservation"
                 className="inline-flex items-center gap-2 bg-beige text-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-beige/90 transition-all shadow-xl hover:shadow-2xl hover:scale-105"
@@ -211,19 +205,22 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[
-              { name: 'Contours', price: '10€' },
-              { name: 'Barbe', price: '10€' },
-              { name: 'Coupe enfant', price: '15€' },
+              { name: 'Coupe Homme', price: '20€' },
+              { name: 'Coupe Femme', price: '30€' },
+              { name: 'Coupe Enfant', price: '15€' },
+              { name: 'Taille de barbe', price: '10€' },
+              { name: 'Rasage', price: '15€' },
               { name: 'Dégradé', price: '20€' },
-              { name: 'Dégradé et Wave', price: '25€' },
-              { name: 'Dégradé Coupe ciseaux & Barbe', price: '25€' },
-              { name: 'Dégradé + dessin', price: '25€' },
               { name: 'Dégradé + Barbe', price: '25€' },
-              { name: 'Dégradé + Curly', price: '30€' },
-              { name: 'Permanente', price: '40€' },
-              { name: 'Tresses', price: 'À partir de 40€', note: 'A partir de 40€' },
-              { name: 'Retouche Locks avec crochets', price: 'À partir de 100€', note: 'A partir de 100€' },
-              { name: 'Départ locks', price: 'À partir de 150€', note: 'A partir de 150€' },
+              { name: 'Brushing', price: '25€' },
+              { name: 'Mise en plis', price: '30€' },
+              { name: 'Coloration', price: 'À partir de 50€', note: 'Selon longueur' },
+              { name: 'Mèches / Balayage', price: 'À partir de 60€', note: 'Selon longueur' },
+              { name: 'Permanente', price: 'À partir de 40€', note: 'Selon longueur' },
+              { name: 'Lissage', price: 'À partir de 80€', note: 'Selon longueur' },
+              { name: 'Tresses', price: 'À partir de 40€', note: 'Selon complexité' },
+              { name: 'Chignon / Coiffure de soirée', price: 'À partir de 35€', note: 'Selon complexité' },
+              { name: 'Soin capillaire', price: 'À partir de 20€', note: 'Selon type de soin' },
             ].map((service, idx) => (
               <div
                 key={idx}
@@ -242,26 +239,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Barbers Section - Nouvelle section */}
-      <section id="barbers" className="py-24 bg-dark barber-texture">
+      {/* Team Section - Nouvelle section */}
+      <section id="equipe" className="py-24 bg-dark barber-texture">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-beige-light">Nos Barbers</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-beige-light">Notre Équipe</h2>
+            <p className="text-lg text-beige-light/70 max-w-2xl mx-auto mt-4">
+              Des professionnels expérimentés à votre service
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'SOUL', services: 'Coupe, Contours, Tresses Locks' },
-              { name: 'TEMI', services: 'Coupe, Contours, Barbe' },
-              { name: 'GOMIS', services: 'Coupe, Contours, Barbe' },
-            ].map((barber, idx) => (
+              { name: 'Stéphane', services: 'Coupe Homme, Dégradé, Barbe' },
+              { name: 'Marie', services: 'Coupe Femme, Coloration, Brushing' },
+              { name: 'Alexandre', services: 'Coupe Homme/Femme, Tresses, Soins' },
+            ].map((stylist, idx) => (
               <div
                 key={idx}
                 className="bg-dark-light rounded-2xl p-8 card-shadow-lg border border-beige/10 hover:border-beige/20 transition-all group"
               >
                 <h3 className="text-2xl font-bold mb-2 text-beige group-hover:text-beige-light transition-colors">
-                  {barber.name}
+                  {stylist.name}
                 </h3>
-                <p className="text-beige-light/70 mb-6">{barber.services}</p>
+                <p className="text-beige-light/70 mb-6">{stylist.services}</p>
                 <div className="flex gap-4 mb-6">
                   <a href="#" className="text-beige-light/60 hover:text-beige transition-colors" aria-label="Facebook" title="Facebook">
                     <Facebook className="w-5 h-5" />
@@ -287,10 +287,14 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-beige-light">Nos Produits</h2>
+            <p className="text-lg text-beige-light/70 max-w-2xl mx-auto mt-4">
+              Des produits de qualité pour prendre soin de vos cheveux
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="bg-dark-light rounded-2xl p-8 card-shadow-lg border border-beige/10 hover:border-beige/20 transition-all group">
-              <h3 className="text-2xl font-bold mb-4 text-beige-light">Huile de barbe</h3>
+              <h3 className="text-2xl font-bold mb-4 text-beige-light">Soins capillaires</h3>
+              <p className="text-beige-light/70 mb-4">Shampoings, après-shampoings et masques</p>
               <Link
                 href="#"
                 className="inline-block text-beige font-bold hover:text-beige-light transition-colors"
@@ -299,7 +303,18 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="bg-dark-light rounded-2xl p-8 card-shadow-lg border border-beige/10 hover:border-beige/20 transition-all group">
-              <h3 className="text-2xl font-bold mb-4 text-beige-light">Accélérateur de pousse</h3>
+              <h3 className="text-2xl font-bold mb-4 text-beige-light">Produits de coiffage</h3>
+              <p className="text-beige-light/70 mb-4">Laques, gels et sprays de fixation</p>
+              <Link
+                href="#"
+                className="inline-block text-beige font-bold hover:text-beige-light transition-colors"
+              >
+                Découvrir →
+              </Link>
+            </div>
+            <div className="bg-dark-light rounded-2xl p-8 card-shadow-lg border border-beige/10 hover:border-beige/20 transition-all group">
+              <h3 className="text-2xl font-bold mb-4 text-beige-light">Soins spécifiques</h3>
+              <p className="text-beige-light/70 mb-4">Huiles, sérums et traitements</p>
               <Link
                 href="#"
                 className="inline-block text-beige font-bold hover:text-beige-light transition-colors"
@@ -334,16 +349,17 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div>
-              <h3 className="text-3xl font-black mb-6 text-beige">SOUL BARBER SHOP</h3>
+              <h3 className="text-3xl font-black mb-6 text-beige">{salonConfig.name}</h3>
               <p className="text-beige-light/70 leading-relaxed mb-4">
-                Convivialité, Professionnalisme, Passion
+                {salonConfig.slogan}
               </p>
             </div>
             <div>
               <h4 className="font-bold mb-6 text-beige text-lg">Horaires</h4>
               <div className="space-y-2 text-beige-light/70">
-                <p>Lundi - Mercredi: 10h - 19h</p>
-                <p>Jeudi - Samedi: 10h - 20h</p>
+                <p>{salonConfig.hours.weekdays}</p>
+                <p>{salonConfig.hours.saturday}</p>
+                <p>{salonConfig.hours.sunday}</p>
               </div>
             </div>
             <div>
@@ -351,19 +367,19 @@ export default function HomePage() {
               <div className="space-y-4 text-beige-light/70">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-beige flex-shrink-0 mt-0.5" />
-                  <span>38 Rue du Général Leclerc, 76000 Rouen</span>
+                  <span>{salonConfig.address}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-beige flex-shrink-0" />
-                  <a href="tel:0749565787" className="hover:text-beige transition-colors">
-                    07 49 56 57 87
+                  <a href={`tel:${salonConfig.phone.replace(/\s/g, '')}`} className="hover:text-beige transition-colors">
+                    {salonConfig.phone}
                   </a>
                 </div>
               </div>
             </div>
           </div>
           <div className="border-t border-dark-light/30 pt-8 text-center text-beige-light/50 text-sm">
-            <p>&copy; 2024 SOUL BARBER SHOP - Tous droits réservés</p>
+            <p>&copy; {new Date().getFullYear()} {salonConfig.name} - Tous droits réservés</p>
           </div>
         </div>
       </footer>

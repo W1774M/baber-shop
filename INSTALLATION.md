@@ -1,4 +1,4 @@
-# Guide d'Installation - Barber Shop
+# Guide d'Installation - Salon de Coiffure
 
 ## Étapes d'installation complètes
 
@@ -29,12 +29,12 @@ openssl rand -base64 32
 # Créer les tables dans la base de données
 npm run db:push
 
-# Créer un compte barber par défaut
+# Créer un compte coiffeur par défaut
 npm run init:db
 ```
 
 Le compte par défaut créé sera :
-- **Email** : `admin@barbershop.com`
+- **Email** : `admin@salon.com`
 - **Mot de passe** : `admin123`
 
 ⚠️ **Important** : Changez ce mot de passe après la première connexion !
@@ -65,7 +65,7 @@ L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 - `npm run start` - Lancer le serveur de production
 - `npm run db:push` - Synchroniser le schéma avec la base de données
 - `npm run db:studio` - Ouvrir Drizzle Studio (interface graphique pour la DB)
-- `npm run init:db` - Créer le compte barber par défaut
+- `npm run init:db` - Créer le compte coiffeur par défaut
 
 ## Dépannage
 

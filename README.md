@@ -1,6 +1,6 @@
-# 💇 Barber Shop - Plateforme de Réservation
+# 💇 Salon de Coiffure - Plateforme de Réservation
 
-Une plateforme complète pour les coiffeurs permettant la réservation en ligne et la gestion de leur activité.
+Une plateforme complète pour les salons de coiffure permettant la réservation en ligne et la gestion de leur activité. Adaptée pour les salons mixtes (hommes et femmes).
 
 ## 🚀 Fonctionnalités
 
@@ -11,7 +11,7 @@ Une plateforme complète pour les coiffeurs permettant la réservation en ligne 
 - Interface moderne et responsive
 
 ### Espace Professionnel (Privé)
-- **Authentification sécurisée** pour les barbers
+- **Authentification sécurisée** pour les coiffeurs
 - **Gestion des photos** : ajout et suppression d'images de coupes
 - **Gestion des disponibilités** : définir les horaires d'ouverture par jour
 - **Gestion des rendez-vous** : voir, confirmer, annuler et marquer comme terminé
@@ -33,13 +33,13 @@ npm install
 npm run db:push
 ```
 
-3. **Créer un compte barber par défaut**
+3. **Créer un compte coiffeur par défaut**
 ```bash
 npx tsx scripts/init-db.ts
 ```
 
 Un compte par défaut sera créé :
-- Email: `admin@barbershop.com`
+- Email: `admin@salon.com`
 - Mot de passe: `admin123`
 
 4. **Lancer le serveur de développement**
@@ -52,7 +52,7 @@ L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 ## 📁 Structure du Projet
 
 ```
-barber-shop/
+salon-coiffure/
 ├── app/
 │   ├── api/              # Routes API
 │   │   ├── auth/        # Authentification NextAuth
@@ -87,7 +87,7 @@ Les photos sont stockées dans `public/uploads/`. Assurez-vous que ce dossier ex
 Le projet utilise SQLite avec Drizzle ORM. La base de données est stockée dans `database.sqlite`.
 
 ### Schémas principaux :
-- **barbers** : Comptes des coiffeurs
+- **barbers** : Comptes des coiffeurs (nom technique de la table, peut être renommé)
 - **photos** : Photos de coupes
 - **appointments** : Rendez-vous clients
 - **availabilities** : Disponibilités par jour
